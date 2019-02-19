@@ -1,16 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>admin</title>
 </head>
+
 <body>
-    
+
     <script src="../node_modules/leancloud-storage/dist/av-min.js"></script>
     <script>
-        
+        var APP_ID = 'aYEBQw7KJ97RjbDRScior3vv-gzGzoHsz';
+        var APP_KEY = 'z15jpAucI2at6kMIHqCNaHk9';
+
+        AV.init({
+            appId: APP_ID,
+            appKey: APP_KEY
+        });
+
+        var TestObject = AV.Object.extend('Playlist');
+        var testObject = new TestObject();
+        testObject.save({
+            name: 'test',
+            cover: 'test',
+            creatorId: 'test',
+            description: 'test',
+            songs: ['1','2']
+        }).then(function (object) {
+            console.log('LeanCloud Rocks!');
+        })
     </script>
 </body>
+
 </html>
